@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './themes/colours.dart';
 
 void main() {
   runApp(const RCPCHWHAMApp());
@@ -12,9 +13,7 @@ class RCPCHWHAMApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'WHAM-RCPCH',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: whamTheme.defaultTheme,
       home: const WHAMHomePage(title: 'Wellbeing and Health Action Movement'),
     );
   }
@@ -61,46 +60,140 @@ class _WHAMHomePageState extends State<WHAMHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(color: PrimaryColour),
+                child: Text('WHAM Menu'),
+              ),
+              ListTile(
+                title: const Text('Social Determinants'),
+                onTap: () {
+                  // close the drawer
+                  Navigator.pop(context);
+                  // push to Social Determinants
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SDOHRoute()));
+                },
+              ),
+              ListTile(
+                title: const Text('History Guide'),
+                onTap: () {
+                  // close the drawer
+                  Navigator.pop(context);
+                  // push to History page
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HistoryGuideRoute()));
+                },
+              ),
+              ListTile(
+                title: const Text('ACES'),
+                onTap: () {
+                  // close the drawer
+                  Navigator.pop(context);
+                  // push to ACES page
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ACESRoute()));
+                },
+              ),
+            ],
+          ),
+        ),
+        body: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            // Column is also a layout widget. It takes a list of children and
+            // arranges them vertically. By default, it sizes itself to fit its
+            // children horizontally, and tries to be as tall as its parent.
+            //
+            // Invoke "debug painting" (press "p" in the console, choose the
+            // "Toggle Debug Paint" action from the Flutter Inspector in Android
+            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+            // to see the wireframe for each widget.
+            //
+            // Column has various properties to control how it sizes itself and
+            // how it positions its children. Here we use mainAxisAlignment to
+            // center the children vertically; the main axis here is the vertical
+            // axis because Columns are vertical (the cross axis would be
+            // horizontal).
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const <Widget>[
+              Image(image: AssetImage('assets/whamlogo.png')),
+              Image(
+                image: AssetImage('assets/incubator-white.png'),
+                fit: BoxFit.fitWidth,
+                width: 200,
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class SDOHRoute extends StatelessWidget {
+  const SDOHRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Social Determinants of Health'),
+        ),
+        body: const Center(
+            child: Text(
+          'The social context based on postcode',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 14, color: TextColor),
+        )));
+  }
+}
+
+class HistoryGuideRoute extends StatelessWidget {
+  const HistoryGuideRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('History Guide'),
+        ),
+        body: const Center(
+            child: Text(
+          'How to approach the social history',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 14, color: TextColor),
+        )));
+  }
+}
+
+class ACESRoute extends StatelessWidget {
+  const ACESRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Adverse Childhood Experiences'),
+        ),
+        body: const Center(
+            child: Text(
+          'Adverse Childhood Experiences',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 14, color: TextColor),
+        )));
   }
 }
