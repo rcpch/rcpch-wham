@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './themes/colours.dart';
+import './pages/social_determinants.dart';
 
 void main() {
   runApp(const RCPCHWHAMApp());
@@ -82,7 +83,9 @@ class _WHAMHomePageState extends State<WHAMHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SDOHRoute()));
+                          builder: (context) => const SDOHRoute(
+                                title: 'Social Determinants of Health',
+                              )));
                 },
               ),
               ListTile(
@@ -132,7 +135,13 @@ class _WHAMHomePageState extends State<WHAMHomePage> {
             // horizontal).
             mainAxisAlignment: MainAxisAlignment.center,
             children: const <Widget>[
-              Image(image: AssetImage('assets/whamlogo.png')),
+              Padding(
+                padding: EdgeInsets.all(30),
+                child: Image(
+                  image: AssetImage('assets/whamlogo.png'),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               Image(
                 image: AssetImage('assets/incubator-white.png'),
                 fit: BoxFit.fitWidth,
@@ -141,24 +150,6 @@ class _WHAMHomePageState extends State<WHAMHomePage> {
             ],
           ),
         ));
-  }
-}
-
-class SDOHRoute extends StatelessWidget {
-  const SDOHRoute({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Social Determinants of Health'),
-        ),
-        body: const Center(
-            child: Text(
-          'The social context based on postcode',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 14, color: TextColor),
-        )));
   }
 }
 
