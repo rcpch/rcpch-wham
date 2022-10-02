@@ -80,13 +80,17 @@ class _SDOHRouteState extends State<SDOHRoute> {
                           postcodeData!.postcode,
                           textAlign: TextAlign.left,
                           textScaleFactor: 1.5,
-                          style: const TextStyle(color: PrimaryColourLight),
+                          style: const TextStyle(
+                              color: PrimaryColourLight,
+                              fontFamily: 'Montserrat'),
                         ),
                         subtitle: Text(
                           postcodeData!.region,
                           textAlign: TextAlign.left,
                           textScaleFactor: 1.0,
-                          style: const TextStyle(color: PrimaryColourLight),
+                          style: const TextStyle(
+                              color: PrimaryColourLight,
+                              fontFamily: 'Montserrat'),
                         ),
                       ),
                       Container(
@@ -96,7 +100,9 @@ class _SDOHRouteState extends State<SDOHRoute> {
                             'CCG: ${postcodeData!.ccg}',
                             textAlign: TextAlign.left,
                             textScaleFactor: 1.0,
-                            style: const TextStyle(color: PrimaryColourLight),
+                            style: const TextStyle(
+                                color: PrimaryColourLight,
+                                fontFamily: 'Montserrat'),
                           )),
                       Container(
                           padding: const EdgeInsets.all(8),
@@ -105,7 +111,9 @@ class _SDOHRouteState extends State<SDOHRoute> {
                             'Primary care trust: ${postcodeData!.primaryCareTrust}',
                             textAlign: TextAlign.left,
                             textScaleFactor: 1.0,
-                            style: const TextStyle(color: PrimaryColourLight),
+                            style: const TextStyle(
+                                color: PrimaryColourLight,
+                                fontFamily: 'Montserrat'),
                           )),
                       Container(
                           padding: const EdgeInsets.all(8),
@@ -114,7 +122,9 @@ class _SDOHRouteState extends State<SDOHRoute> {
                             'Expanded Decile: ${imdData!.ukCompositeImd2020MysocEExpandedDecile}',
                             textAlign: TextAlign.left,
                             textScaleFactor: 1.0,
-                            style: const TextStyle(color: PrimaryColourLight),
+                            style: const TextStyle(
+                                color: PrimaryColourLight,
+                                fontFamily: 'Montserrat'),
                           ))
                     ]),
                   )
@@ -136,14 +146,18 @@ class _SDOHRouteState extends State<SDOHRoute> {
                           children: [
                             const Text(
                               'Please enter a postcode',
-                              style: TextStyle(color: TextColor, fontSize: 30),
+                              style: TextStyle(
+                                  color: TextColor,
+                                  fontSize: 30,
+                                  fontFamily: 'Montserrat'),
                             ),
                             TextFormField(
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: const InputDecoration(
                                 hintText: "e.g. W1A 1AA",
-                                hintStyle: TextStyle(color: TextColor),
+                                hintStyle: TextStyle(
+                                    color: TextColor, fontFamily: 'Montserrat'),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.zero),
                               ),
@@ -161,7 +175,8 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                 }
                                 return null;
                               },
-                              style: const TextStyle(color: TextColor),
+                              style: const TextStyle(
+                                  color: TextColor, fontFamily: 'Montserrat'),
                             ),
                             ElevatedButton(
                               onPressed: () {
