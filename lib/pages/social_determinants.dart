@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:rcpch_wham/network/api_service.dart';
+import 'package:rcpch_wham/network/imdresponse.dart';
 import 'package:rcpch_wham/network/postcodesResponse.dart';
 import '../themes/colours.dart';
 
@@ -23,28 +26,20 @@ class SDOHRoute extends StatefulWidget {
 
 class _SDOHRouteState extends State<SDOHRoute> {
   late PostcodeData? postcodeData;
+  late ImdResponse? imdData;
   late bool postcodeValid = false;
   final _formKey = GlobalKey<FormState>();
 
   final postcodeController = TextEditingController();
-  // bool _formattedPostcode(String postcode) {
-  //   RegExp regExp =
-  //       RegExp(r'^([A-Z][A-HJ-Y]?\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$');
-  //   var pureString = postcode.replaceAll(' ', '');
-  //   var format = regExp.hasMatch(pureString);
 
-  //   if (format) {
-  //     final match = regExp.firstMatch(pureString.toUpperCase());
-  //     // return "${match?.group(1)?.padLeft(2, '0')} ${match?.group(2)?.padLeft(2, '0')}";
-  //     return true;
-  //   } else {
-  //     // return postcode;
-  //     return false;
-  //   }
-  // }
-
-  void getPostcodeData(String postcode) async {
+  Future getPostcodeData(String postcode) async {
     postcodeData = (await ApiService().getPostcodeResponse(postcode));
+    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
+    return postcodeData;
+  }
+
+  void getIMDData(String lsoa) async {
+    imdData = (await ApiService().getIMDResponse(lsoa));
     Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
   }
 
@@ -68,47 +63,62 @@ class _SDOHRouteState extends State<SDOHRoute> {
           future: ApiService().getPostcodeResponse(postcodeController.text),
           builder: ((context, snapshot) {
             if (snapshot.hasData) {
-              return Card(
-                clipBehavior: Clip.antiAlias,
-                shape: const ContinuousRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.vertical()),
-                color: PrimaryColour,
-                child: Column(children: [
-                  ListTile(
-                    leading: const Icon(Icons.location_city_outlined),
-                    textColor: PrimaryColourLight,
-                    title: Text(
-                      postcodeData!.postcode,
-                      textAlign: TextAlign.left,
-                      textScaleFactor: 1.5,
-                      style: const TextStyle(color: PrimaryColourLight),
-                    ),
-                    subtitle: Text(
-                      postcodeData!.region,
-                      textAlign: TextAlign.left,
-                      textScaleFactor: 1.0,
-                      style: const TextStyle(color: PrimaryColourLight),
-                    ),
-                  ),
-                  Container(
-                      padding: const EdgeInsets.all(8),
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'CCG: ${postcodeData!.ccg}',
-                        textAlign: TextAlign.left,
-                        textScaleFactor: 1.0,
-                        style: const TextStyle(color: PrimaryColourLight),
-                      )),
-                  Container(
-                      padding: const EdgeInsets.all(8),
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Primary care trust: ${postcodeData!.primaryCareTrust}',
-                        textAlign: TextAlign.left,
-                        textScaleFactor: 1.0,
-                        style: const TextStyle(color: PrimaryColourLight),
-                      )),
-                ]),
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: const ContinuousRectangleBorder(
+                        borderRadius: BorderRadiusDirectional.vertical()),
+                    color: PrimaryColour,
+                    child: Column(children: [
+                      ListTile(
+                        leading: const Icon(Icons.location_city_outlined),
+                        textColor: PrimaryColourLight,
+                        title: Text(
+                          postcodeData!.postcode,
+                          textAlign: TextAlign.left,
+                          textScaleFactor: 1.5,
+                          style: const TextStyle(color: PrimaryColourLight),
+                        ),
+                        subtitle: Text(
+                          postcodeData!.region,
+                          textAlign: TextAlign.left,
+                          textScaleFactor: 1.0,
+                          style: const TextStyle(color: PrimaryColourLight),
+                        ),
+                      ),
+                      Container(
+                          padding: const EdgeInsets.all(8),
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'CCG: ${postcodeData!.ccg}',
+                            textAlign: TextAlign.left,
+                            textScaleFactor: 1.0,
+                            style: const TextStyle(color: PrimaryColourLight),
+                          )),
+                      Container(
+                          padding: const EdgeInsets.all(8),
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Primary care trust: ${postcodeData!.primaryCareTrust}',
+                            textAlign: TextAlign.left,
+                            textScaleFactor: 1.0,
+                            style: const TextStyle(color: PrimaryColourLight),
+                          )),
+                      Container(
+                          padding: const EdgeInsets.all(8),
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Expanded Decile: ${imdData!.ukCompositeImd2020MysocEExpandedDecile}',
+                            textAlign: TextAlign.left,
+                            textScaleFactor: 1.0,
+                            style: const TextStyle(color: PrimaryColourLight),
+                          ))
+                    ]),
+                  )
+                ],
               );
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
@@ -126,21 +136,20 @@ class _SDOHRouteState extends State<SDOHRoute> {
                           children: [
                             const Text(
                               'Please enter a postcode',
-                              style: TextStyle(color: TextColor),
+                              style: TextStyle(color: TextColor, fontSize: 30),
                             ),
                             TextFormField(
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: const InputDecoration(
-                                hintText: "Postcode",
-                              ),
+                                  hintText: "Postcode",
+                                  border: OutlineInputBorder()),
                               controller: postcodeController,
                               onSaved: (newValue) {
                                 if (newValue == null) {
                                   print('No dice ');
                                 } else {
                                   print('saved!');
-                                  getPostcodeData(newValue);
                                 }
                               },
                               validator: (value) {
@@ -162,7 +171,10 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                         content: Text('Processing Data')),
                                   );
                                   _formKey.currentState!.save();
-                                  getPostcodeData(postcodeController.text);
+                                  getPostcodeData(postcodeController.text)
+                                      .then((value) => {
+                                            getIMDData(value.codes.lsoa),
+                                          });
                                 }
                               },
                               child: const Text('Submit'),

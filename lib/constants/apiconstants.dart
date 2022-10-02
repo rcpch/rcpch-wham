@@ -1,5 +1,5 @@
 class ApiConstants {
   static String deprivareBaseUrl =
-      'https://rcpch-deprivare.uksouth.azurecontainer.io:8080/v1/uk/lsoa';
+      'http://rcpch-deprivare.uksouth.azurecontainer.io:8080/v1/uk/lsoa';
   static String postcodesBaseUrl = "https://api.postcodes.io/postcodes";
 }

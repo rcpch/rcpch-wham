@@ -46,9 +46,8 @@ class ApiService {
 
   Future<ImdResponse?> getIMDResponse(String lsoa) async {
     try {
-      var url = Uri.parse("${ApiConstants.postcodesBaseUrl}/$lsoa");
+      var url = Uri.parse("${ApiConstants.deprivareBaseUrl}/$lsoa");
       var response = await http.get(url);
-
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         ImdResponse apiIMDData = ImdResponse.fromJson(data);
