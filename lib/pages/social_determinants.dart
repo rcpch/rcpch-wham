@@ -76,7 +76,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                             shape: const ContinuousRectangleBorder(
                                 borderRadius:
                                     BorderRadiusDirectional.vertical()),
-                            color: PrimaryColour,
+                            color: PrimaryColourDark,
                             child: Column(children: [
                               ListTile(
                                 leading:
@@ -125,13 +125,35 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                   padding: const EdgeInsets.all(8),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    'Expanded Decile: ${imdData!.ukCompositeImd2020MysocEExpandedDecile}',
+                                    'Ranking : ${imdData!.ukCompositeImd2020MysocUkImdERank} [lower numbers are more deprived]',
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
                                         color: PrimaryColourLight,
                                         fontFamily: 'Montserrat'),
-                                  ))
+                                  )),
+                              Container(
+                                  padding: const EdgeInsets.all(8),
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    'Score : ${imdData!.ukCompositeImd2020MysocUkImdEScore} [higher numbers are more deprived]',
+                                    textAlign: TextAlign.left,
+                                    textScaleFactor: 1.0,
+                                    style: const TextStyle(
+                                        color: PrimaryColourLight,
+                                        fontFamily: 'Montserrat'),
+                                  )),
+                              Container(
+                                  padding: const EdgeInsets.all(8),
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    'Expanded Decile: ${imdData!.ukCompositeImd2020MysocEExpandedDecile} [lower numbers are more deprived]',
+                                    textAlign: TextAlign.left,
+                                    textScaleFactor: 1.0,
+                                    style: const TextStyle(
+                                        color: PrimaryColourLight,
+                                        fontFamily: 'Montserrat'),
+                                  )),
                             ]),
                           )
                         ],
