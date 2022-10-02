@@ -142,8 +142,11 @@ class _SDOHRouteState extends State<SDOHRoute> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: const InputDecoration(
-                                  hintText: "Postcode",
-                                  border: OutlineInputBorder()),
+                                hintText: "e.g. W1A 1AA",
+                                hintStyle: TextStyle(color: TextColor),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.zero),
+                              ),
                               controller: postcodeController,
                               onSaved: (newValue) {
                                 if (newValue == null) {
