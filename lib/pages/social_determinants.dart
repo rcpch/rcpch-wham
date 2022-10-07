@@ -158,6 +158,17 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                   padding: const EdgeInsets.all(8),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
+                                    'Original Decile: ${imdData!.ukCompositeImd2020MysocOriginalDecile} [lower numbers are more deprived]',
+                                    textAlign: TextAlign.left,
+                                    textScaleFactor: 1.0,
+                                    style: const TextStyle(
+                                        color: PrimaryColourLight,
+                                        fontFamily: 'Montserrat'),
+                                  )),
+                              Container(
+                                  padding: const EdgeInsets.all(8),
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
                                     'Income: Better than ${imdData!.ukCompositeImd2020MysocIncomeScore}% of areas in the UK',
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
