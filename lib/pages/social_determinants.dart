@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:rcpch_wham/network/api_service.dart';
 import 'package:rcpch_wham/network/imdresponse.dart';
@@ -125,7 +123,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                   padding: const EdgeInsets.all(8),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    'Ranking : ${imdData!.ukCompositeImd2020MysocUkImdERank} [out of 32,844. Lower numbers are more deprived]',
+                                    'Ranking : ${imdData!.ukCompositeImd2020MysocUkImdERank}',
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
@@ -187,6 +185,15 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                         color: PrimaryColourLight,
                                         fontFamily: 'Montserrat'),
                                   )),
+                              const ListTile(
+                                leading: Icon(Icons.bookmark),
+                                textColor: PrimaryColourLight,
+                                tileColor: PrimaryColour,
+                                title: Text(
+                                  'Parsons, Alex (2021), UK 2020 Composite Index of Multiple Deprivation, https://github.com/mysociety/composite_uk_imd',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              )
                             ]),
                           )
                         ],

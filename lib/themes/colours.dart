@@ -20,6 +20,7 @@ class whamTheme {
         secondary: SecondaryColour,
         background: Background,
       ),
+      iconTheme: theme.iconTheme.copyWith(color: Colors.white),
       buttonTheme: theme.buttonTheme.copyWith(
           buttonColor: SecondaryColour, textTheme: ButtonTextTheme.primary),
       scaffoldBackgroundColor: Background,

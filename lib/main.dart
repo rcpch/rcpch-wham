@@ -1,6 +1,10 @@
+import 'package:fab_circular_menu/fab_circular_menu.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import './themes/colours.dart';
 import './pages/social_determinants.dart';
+import './pages/aces.dart';
 
 void main() {
   runApp(const RCPCHWHAMApp());
@@ -12,7 +16,7 @@ class RCPCHWHAMApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'WHAM-RCPCH',
       theme: whamTheme.defaultTheme,
       home: const WHAMHomePage(title: 'Wellbeing and Health Action Movement'),
@@ -27,7 +31,8 @@ class WHAMHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
@@ -64,76 +69,121 @@ class WHAMHomePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HistoryGuideRoute()));
+                          builder: (context) => const HistoryGuideRoute(
+                              title:
+                                  'Identifying Social Determinants of Health')));
                 },
               ),
               ListTile(
                 title: const Text('ACES'),
-                onTap: () {
+                onTap: () => {
                   // close the drawer
-                  Navigator.pop(context);
+                  Navigator.pop(context),
                   // push to ACES page
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ACESRoute()));
+                          builder: (context) => const ACESRoute(
+                                title: 'ACES',
+                              )))
                 },
               ),
             ],
           ),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Padding(
-                padding: EdgeInsets.all(30),
-                child: Image(
-                  image: AssetImage('assets/whamlogo.png'),
-                  fit: BoxFit.fitWidth,
-                ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const <Widget>[
+            Center(
+              child: Text(
+                'Health Inequalities',
+                style: TextStyle(
+                    fontFamily: 'Montserrat-Regular',
+                    fontSize: 40,
+                    color: TextColor),
               ),
-              Image(
+            ),
+            Padding(
+              padding: EdgeInsets.all(30),
+              child: Image(
                 image: AssetImage('assets/incubator-white.png'),
                 fit: BoxFit.fitWidth,
-                width: 200,
+                width: 300,
               ),
-            ],
-          ),
-        ));
+            ),
+            Padding(
+              padding: EdgeInsets.all(30),
+              child: Image(
+                image: AssetImage('assets/whamlogo.png'),
+                fit: BoxFit.fitWidth,
+                width: 150,
+              ),
+            ),
+          ],
+        ),
+        floatingActionButton: FabCircularMenu(
+            fabOpenColor: PrimaryColour,
+            fabCloseColor: PrimaryColour,
+            ringColor: PrimaryColour,
+            alignment: Alignment.bottomCenter,
+            children: [
+              InkWell(
+                  onTap: () => Get.to(() =>
+                      const SDOHRoute(title: 'Social Determinants of Health')),
+                  child:
+                      Column(mainAxisSize: MainAxisSize.min, children: const [
+                    Icon(CupertinoIcons.gauge_badge_minus),
+                    Text(
+                      'Deprivation Score',
+                      style: TextStyle(
+                          fontFamily: 'Montserrat', color: Colors.white),
+                    )
+                  ])),
+              InkWell(
+                  onTap: () => Get.to(() =>
+                      const ACESRoute(title: 'Adverse Childhood Experiences')),
+                  child:
+                      Column(mainAxisSize: MainAxisSize.min, children: const [
+                    Icon(CupertinoIcons.exclamationmark_shield),
+                    Text(
+                      'ACES',
+                      style: TextStyle(
+                          fontFamily: 'Montserrat', color: Colors.white),
+                    )
+                  ])),
+              InkWell(
+                  onTap: () => Get.to(() => const HistoryGuideRoute(
+                      title: 'Identifying Social Determinants of Health')),
+                  child:
+                      Column(mainAxisSize: MainAxisSize.min, children: const [
+                    Icon(CupertinoIcons.bubble_left_bubble_right),
+                    Text(
+                      'Social Determinants',
+                      style: TextStyle(
+                          fontFamily: 'Montserrat', color: Colors.white),
+                    )
+                  ])),
+            ]),
+      ),
+    );
   }
 }
 
 class HistoryGuideRoute extends StatelessWidget {
-  const HistoryGuideRoute({super.key});
+  const HistoryGuideRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('History Guide'),
+          title: Text(title),
         ),
         body: const Center(
             child: Text(
-          'How to approach the social history',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 14, color: TextColor),
-        )));
-  }
-}
-
-class ACESRoute extends StatelessWidget {
-  const ACESRoute({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Adverse Childhood Experiences'),
-        ),
-        body: const Center(
-            child: Text(
-          'Adverse Childhood Experiences',
+          'How to take a history of social determinants of health.',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 14, color: TextColor),
         )));
