@@ -1,7 +1,7 @@
-import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import './themes/colours.dart';
 import './pages/social_determinants.dart';
 import './pages/aces.dart';
@@ -122,49 +122,37 @@ class WHAMHomePage extends StatelessWidget {
             ),
           ],
         ),
-        floatingActionButton: FabCircularMenu(
-            fabOpenColor: PrimaryColour,
-            fabCloseColor: PrimaryColour,
-            ringColor: PrimaryColour,
-            alignment: Alignment.bottomCenter,
-            children: [
-              InkWell(
-                  onTap: () => Get.to(() =>
-                      const SDOHRoute(title: 'Social Determinants of Health')),
-                  child:
-                      Column(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(CupertinoIcons.gauge_badge_minus),
-                    Text(
-                      'Deprivation Score',
-                      style: TextStyle(
-                          fontFamily: 'Montserrat', color: Colors.white),
-                    )
-                  ])),
-              InkWell(
-                  onTap: () => Get.to(() =>
-                      const ACESRoute(title: 'Adverse Childhood Experiences')),
-                  child:
-                      Column(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(CupertinoIcons.exclamationmark_shield),
-                    Text(
-                      'ACES',
-                      style: TextStyle(
-                          fontFamily: 'Montserrat', color: Colors.white),
-                    )
-                  ])),
-              InkWell(
-                  onTap: () => Get.to(() => const HistoryGuideRoute(
-                      title: 'Identifying Social Determinants of Health')),
-                  child:
-                      Column(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(CupertinoIcons.bubble_left_bubble_right),
-                    Text(
-                      'Social Determinants',
-                      style: TextStyle(
-                          fontFamily: 'Montserrat', color: Colors.white),
-                    )
-                  ])),
-            ]),
+        floatingActionButton: SpeedDial(
+          backgroundColor: PrimaryColour,
+          overlayColor: Colors.black,
+          overlayOpacity: 0.5,
+          children: [
+            SpeedDialChild(
+              child: const Icon(CupertinoIcons.gauge_badge_minus),
+              label: 'Deprivation Score',
+              labelStyle: const TextStyle(
+                  fontFamily: 'Montserrat', color: Colors.white),
+              onTap: () => Get.to(() => const SDOHRoute(
+                  title: 'Social Determinants of Health')),
+            ),
+            SpeedDialChild(
+              child: const Icon(CupertinoIcons.exclamationmark_shield),
+              label: 'ACES',
+              labelStyle: const TextStyle(
+                  fontFamily: 'Montserrat', color: Colors.white),
+              onTap: () => Get.to(() => const ACESRoute(
+                  title: 'Adverse Childhood Experiences')),
+            ),
+            SpeedDialChild(
+              child: const Icon(CupertinoIcons.bubble_left_bubble_right),
+              label: 'Social Determinants',
+              labelStyle: const TextStyle(
+                  fontFamily: 'Montserrat', color: Colors.white),
+              onTap: () => Get.to(() => const HistoryGuideRoute(
+                  title: 'Identifying Social Determinants of Health')),
+            ),
+          ],
+        ),
       ),
     );
   }

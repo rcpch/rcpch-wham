@@ -24,7 +24,6 @@ class whamTheme {
       buttonTheme: theme.buttonTheme.copyWith(
           buttonColor: SecondaryColour, textTheme: ButtonTextTheme.primary),
       scaffoldBackgroundColor: Background,
-      backgroundColor: Background,
     );
   }
 }
