@@ -1,4 +1,4 @@
-import 'package:fab_circular_menu/fab_circular_menu.dart';
+import 'package:circular_menu/circular_menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +18,7 @@ class RCPCHWHAMApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'WHAM-RCPCH',
-      theme: whamTheme.defaultTheme,
+      theme: WhamTheme.defaultTheme,
       home: const WHAMHomePage(title: 'Wellbeing and Health Action Movement'),
     );
   }
@@ -43,7 +43,7 @@ class WHAMHomePage extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               const DrawerHeader(
-                decoration: BoxDecoration(color: PrimaryColour),
+                decoration: BoxDecoration(color: primaryColour),
                 child: Text('WHAM Menu'),
               ),
               ListTile(
@@ -91,7 +91,7 @@ class WHAMHomePage extends StatelessWidget {
             ],
           ),
         ),
-        body: Column(
+        body: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const <Widget>[
@@ -101,7 +101,7 @@ class WHAMHomePage extends StatelessWidget {
                 style: TextStyle(
                     fontFamily: 'Montserrat-Regular',
                     fontSize: 40,
-                    color: TextColor),
+                    color: textColor),
               ),
             ),
             Padding(
@@ -122,49 +122,34 @@ class WHAMHomePage extends StatelessWidget {
             ),
           ],
         ),
-        floatingActionButton: FabCircularMenu(
-            fabOpenColor: PrimaryColour,
-            fabCloseColor: PrimaryColour,
-            ringColor: PrimaryColour,
+        floatingActionButton: Builder( // Use Builder to get a context within the widget tree
+          builder: (context) {
+            final colorScheme = Theme.of(context).colorScheme;  // Get the color scheme
+            return CircularMenu(
             alignment: Alignment.bottomCenter,
-            children: [
-              InkWell(
-                  onTap: () => Get.to(() =>
-                      const SDOHRoute(title: 'Social Determinants of Health')),
-                  child:
-                      Column(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(CupertinoIcons.gauge_badge_minus),
-                    Text(
-                      'Deprivation Score',
-                      style: TextStyle(
-                          fontFamily: 'Montserrat', color: Colors.white),
-                    )
-                  ])),
-              InkWell(
-                  onTap: () => Get.to(() =>
-                      const ACESRoute(title: 'Adverse Childhood Experiences')),
-                  child:
-                      Column(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(CupertinoIcons.exclamationmark_shield),
-                    Text(
-                      'ACES',
-                      style: TextStyle(
-                          fontFamily: 'Montserrat', color: Colors.white),
-                    )
-                  ])),
-              InkWell(
-                  onTap: () => Get.to(() => const HistoryGuideRoute(
-                      title: 'Identifying Social Determinants of Health')),
-                  child:
-                      Column(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(CupertinoIcons.bubble_left_bubble_right),
-                    Text(
-                      'Social Determinants',
-                      style: TextStyle(
-                          fontFamily: 'Montserrat', color: Colors.white),
-                    )
-                  ])),
-            ]),
+            toggleButtonColor: colorScheme.primary,  // Use primary color for the toggle button
+            items: [
+              CircularMenuItem(
+                  onTap: () => Get.to(() => const SDOHRoute(title: 'Social Determinants of Health')),
+                  icon: CupertinoIcons.gauge_badge_minus,
+                  color: colorScheme.secondaryContainer,  // Use secondary container for item background
+                  iconColor: colorScheme.onSecondaryContainer, // Use onSecondaryContainer for icon
+              ),
+              CircularMenuItem(
+                onTap: () => Get.to(() => const ACESRoute(title: 'Adverse Childhood Experiences')),
+                icon: CupertinoIcons.exclamationmark_shield,
+                color: colorScheme.secondaryContainer,  // Use secondary container for item background
+                iconColor: colorScheme.onSecondaryContainer, // Use onSecondaryContainer for icon
+              ),
+              CircularMenuItem(
+                onTap: () => Get.to(() => const HistoryGuideRoute(title: 'Identifying Social Determinants of Health')),
+                icon: CupertinoIcons.bubble_left_bubble_right,
+                color: colorScheme.secondaryContainer,  // Use secondary container for item background
+                iconColor: colorScheme.onSecondaryContainer, // Use onSecondaryContainer for icon
+              )
+            ]);
+                  },
+                  ),
       ),
     );
   }
@@ -185,7 +170,7 @@ class HistoryGuideRoute extends StatelessWidget {
             child: Text(
           'How to take a history of social determinants of health.',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 14, color: TextColor),
+          style: TextStyle(fontSize: 14, color: textColor),
         )));
   }
 }

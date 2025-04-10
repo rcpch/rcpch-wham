@@ -74,18 +74,18 @@ class _SDOHRouteState extends State<SDOHRoute> {
                             shape: const ContinuousRectangleBorder(
                                 borderRadius:
                                     BorderRadiusDirectional.vertical()),
-                            color: PrimaryColourDark,
+                            color: primaryColourDark,
                             child: Column(children: [
                               ListTile(
                                 leading:
                                     const Icon(Icons.location_city_outlined),
-                                textColor: PrimaryColourLight,
+                                textColor: primaryColourLight,
                                 title: Text(
                                   postcodeData!.postcode,
                                   textAlign: TextAlign.left,
                                   textScaleFactor: 1.5,
                                   style: const TextStyle(
-                                      color: PrimaryColourLight,
+                                      color: primaryColourLight,
                                       fontFamily: 'Montserrat'),
                                 ),
                                 subtitle: Text(
@@ -93,7 +93,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                   textAlign: TextAlign.left,
                                   textScaleFactor: 1.0,
                                   style: const TextStyle(
-                                      color: PrimaryColourLight,
+                                      color: primaryColourLight,
                                       fontFamily: 'Montserrat'),
                                 ),
                               ),
@@ -105,7 +105,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
-                                        color: PrimaryColourLight,
+                                        color: primaryColourLight,
                                         fontFamily: 'Montserrat'),
                                   )),
                               Container(
@@ -116,7 +116,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
-                                        color: PrimaryColourLight,
+                                        color: primaryColourLight,
                                         fontFamily: 'Montserrat'),
                                   )),
                               Container(
@@ -127,7 +127,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
-                                        color: PrimaryColourLight,
+                                        color: primaryColourLight,
                                         fontFamily: 'Montserrat'),
                                   )),
                               Container(
@@ -138,7 +138,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
-                                        color: PrimaryColourLight,
+                                        color: primaryColourLight,
                                         fontFamily: 'Montserrat'),
                                   )),
                               Container(
@@ -149,7 +149,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
-                                        color: PrimaryColourLight,
+                                        color: primaryColourLight,
                                         fontFamily: 'Montserrat'),
                                   )),
                               Container(
@@ -160,7 +160,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
-                                        color: PrimaryColourLight,
+                                        color: primaryColourLight,
                                         fontFamily: 'Montserrat'),
                                   )),
                               Container(
@@ -171,7 +171,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
-                                        color: PrimaryColourLight,
+                                        color: primaryColourLight,
                                         fontFamily: 'Montserrat'),
                                   )),
                               Container(
@@ -182,13 +182,13 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
-                                        color: PrimaryColourLight,
+                                        color: primaryColourLight,
                                         fontFamily: 'Montserrat'),
                                   )),
                               const ListTile(
                                 leading: Icon(Icons.bookmark),
-                                textColor: PrimaryColourLight,
-                                tileColor: PrimaryColour,
+                                textColor: primaryColourLight,
+                                tileColor: primaryColourLight,
                                 title: Text(
                                   'Parsons, Alex (2021), UK 2020 Composite Index of Multiple Deprivation, https://github.com/mysociety/composite_uk_imd',
                                   style: TextStyle(fontSize: 12),
@@ -215,7 +215,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                     const Text(
                                       'Please enter a postcode',
                                       style: TextStyle(
-                                          color: TextColor,
+                                          color: textColor,
                                           fontSize: 30,
                                           fontFamily: 'Montserrat'),
                                     ),
@@ -225,7 +225,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                       decoration: const InputDecoration(
                                         hintText: "e.g. W1A 1AA",
                                         hintStyle: TextStyle(
-                                            color: TextColor,
+                                            color: textColor,
                                             fontFamily: 'Montserrat'),
                                         border: OutlineInputBorder(
                                             borderRadius: BorderRadius.zero),
@@ -245,14 +245,14 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                         return null;
                                       },
                                       style: const TextStyle(
-                                          color: TextColor,
+                                          color: textColor,
                                           fontFamily: 'Montserrat'),
                                     ),
                                     ElevatedButton(
                                       style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
-                                                  PrimaryColourDark),
+                                                  primaryColour),
                                           shape: MaterialStateProperty.all<
                                                   RoundedRectangleBorder>(
                                               const RoundedRectangleBorder(
@@ -260,7 +260,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                                       BorderRadius.zero,
                                                   side: BorderSide(
                                                       color:
-                                                          PrimaryColourDark)))),
+                                                          primaryColour)))),
                                       onPressed: () {
                                         // Validate returns true if the form is valid, or false otherwise.
                                         if (_formKey.currentState!.validate()) {

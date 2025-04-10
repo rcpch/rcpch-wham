@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
+const seedColor = Color(0xFF11a7f2); // Your original primary color
 
-const PrimaryColour = const Color(0xFF11a7f2);
-const PrimaryColourLight = const Color(0xFFf0fafe);
-const PrimaryColourDark = const Color(0xFF3366cc);
-const SecondaryColour = const Color(0xFFe00087);
-const SecondaryColourLight = const Color(0xFFFFDEEA);
-const Background = const Color(0xFFFFFFFF);
-const TextColor = const Color(0xFF000000);
+const primaryColour = Color(0xFF11a7f2);
+const primaryColourLight = Color(0xFFf0fafe);
+const primaryColourDark = Color(0xFF3366cc);
+const secondaryColour = Color(0xFFe00087);
+const secondaryColourLight = Color(0xFFFFDEEA);
 
-class whamTheme {
-  static final ThemeData defaultTheme = _buildWHAMTheme();
+const background = Color(0xFFFFFFFF);
+const textColor = Color(0xFF000000);
 
-  static ThemeData _buildWHAMTheme() {
-    final theme = ThemeData.dark();
+class WhamTheme {
+  static final ThemeData defaultTheme = _buildWhamTheme();
 
-    return theme.copyWith(
-      colorScheme: theme.colorScheme.copyWith(
-        primary: PrimaryColour,
-        secondary: SecondaryColour,
-        background: Background,
+  static ThemeData _buildWhamTheme() {
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed( // Use fromSeed for better M3 scheme
+        seedColor: seedColor,
+        brightness: Brightness.light, // Or Brightness.dark for a dark theme
+        surface: background, // If your background is also your main surface
+        onSurface: textColor,
+        background: background,
+        onBackground: textColor,
       ),
-      iconTheme: theme.iconTheme.copyWith(color: Colors.white),
-      buttonTheme: theme.buttonTheme.copyWith(
-          buttonColor: SecondaryColour, textTheme: ButtonTextTheme.primary),
-      scaffoldBackgroundColor: Background,
-      backgroundColor: Background,
     );
   }
 }

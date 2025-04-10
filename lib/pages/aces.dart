@@ -47,7 +47,7 @@ class _ACESRouteState extends State<ACESRoute> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
-          backgroundColor: PrimaryColourDark,
+          backgroundColor: primaryColourDark,
         ),
         body: SafeArea(
             child: Column(children: [
@@ -69,7 +69,7 @@ class _ACESRouteState extends State<ACESRoute> {
   Widget acesItem(String title, String subtitle, bool isSelected, int index) {
     return Card(
       child: ListTile(
-        tileColor: isSelected ? PrimaryColourDark : PrimaryColour,
+        tileColor: isSelected ? primaryColourDark : primaryColour,
         leading: const CircleAvatar(
           backgroundColor: Colors.pink,
           child: Icon(
@@ -77,7 +77,7 @@ class _ACESRouteState extends State<ACESRoute> {
             color: Colors.white,
           ),
         ),
-        textColor: PrimaryColour,
+        textColor: primaryColour,
         title: Text(
           title,
           style: const TextStyle(fontFamily: 'Montserrat', color: Colors.white),
