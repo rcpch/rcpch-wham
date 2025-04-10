@@ -1,4 +1,4 @@
-package com.example.rcpch_wham
+package uk.ac.rcpch_wham
 
 import io.flutter.embedding.android.FlutterActivity
 
