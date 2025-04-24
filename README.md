@@ -31,11 +31,39 @@ cd rcpch-wham
 flutter pub get
 ```
 
-1. Run the application
+1. Run the application (web browser)
 
 ```shell
 flutter run
 ```
+
+1. Run the application (Android emulator)
+
+```shell
+flutter emulators
+1 available emulator:
+
+Id                  • Name                • Manufacturer • Platform
+
+Medium_Phone_API_36 • Medium Phone API 36 • Generic      • android
+
+To run an emulator, run 'flutter emulators --launch <emulator id>'.
+To create a new emulator, run 'flutter emulators --create [--name xyz]'.
+
+You can find more information on managing emulators at the links below:
+  https://developer.android.com/studio/run/managing-avds
+  https://developer.android.com/studio/command-line/avdmanager
+
+flutter emulators --launch Medium_Phone_API_36
+```
+
+You must wait until the emulator has booted up and is showing you the Android home screen.
+
+```shell
+flutter run
+```
+
+The first time you do this it will download all software build tools ever created so expect it to take ages.
 
 The app has been tested on:
 
