@@ -23,3 +23,6 @@ doc/api/
 
 # Avoid committing generated MacOS files:
 .DS_Store
+
+# Don't commit environment variables
+.env
