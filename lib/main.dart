@@ -6,7 +6,10 @@ import './themes/colours.dart';
 import './pages/social_determinants.dart';
 import './pages/aces.dart';
 
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+void main() async {
+  await dotenv.load();
   runApp(const RCPCHWHAMApp());
 }
 
