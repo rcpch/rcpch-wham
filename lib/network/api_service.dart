@@ -9,12 +9,18 @@ import './postcodesResponse.dart';
 class ApiService {
   Future<PostcodeData?> getPostcodeResponse(String postcode) async {
     try {
-      var url = Uri.parse("${ApiConstants.rcpchPostcodesBaseUrl}/$postcode");
-      var response = await http.get(url);
+      var url = Uri.parse("${ApiConstants.rcpchPostcodesBaseUrl}/postcodes/$postcode");
+      var response = await http.get(
+        url,
+        headers: {
+          'Ocp-Apim-Subscription-Key': '${ApiConstants.rcpchPostcodesApiKey}',
+        },
+      );
 
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         PostcodeData apiPostcodeData = PostcodeData.fromJson(data['result']);
+        log(apiPostcodeData.toString());
         return apiPostcodeData;
       }
     } catch (e) {
@@ -25,29 +31,15 @@ class ApiService {
     }
   }
 
-  Future<bool> isValidPostcode(String postcode) async {
+  Future<ImdResponse?> getIMDResponse(String postcode) async {
     try {
-      var url =
-          Uri.parse("${ApiConstants.rcpchPostcodesBaseUrl}/$postcode/validate");
-      var response = await http.get(url);
-      if (response.statusCode == 200) {
-        print('I got a postcode valid 200');
-        var data = jsonDecode(response.body);
-
-        return true;
-      } else {
-        return false;
-      }
-    } catch (e) {
-      log(e.toString());
-      return false;
-    }
-  }
-
-  Future<ImdResponse?> getIMDResponse(String lsoa) async {
-    try {
-      var url = Uri.parse("${ApiConstants.rcpchCensusEngineBaseUrl}/$lsoa");
-      var response = await http.get(url);
+      var url = Uri.parse("${ApiConstants.rcpchCensusEngineBaseUrl}?postcode=${postcode}");
+      var response = await http.get(
+        url,
+        headers: {
+          'Subscription-Key': '${ApiConstants.rcpchCensusEngineApiKey}',
+        },
+      );
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         ImdResponse apiIMDData = ImdResponse.fromJson(data);

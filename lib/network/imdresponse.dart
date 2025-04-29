@@ -11,75 +11,240 @@ String imdResponseToJson(ImdResponse data) => json.encode(data.toJson());
 
 class ImdResponse {
   ImdResponse({
-    required this.ukCompositeImd2020MysocIncomeScore,
-    required this.ukCompositeImd2020MysocEExpandedDecile,
-    required this.ukCompositeImd2020MysocNation,
-    required this.ukCompositeImd2020MysocUkImdEScore,
-    required this.ukCompositeImd2020MysocOverallLocalScore,
-    required this.ukCompositeImd2020MysocOriginalDecile,
-    required this.ukCompositeImd2020MysocUkImdERank,
-    required this.ukCompositeImd2020MysocUkImdEPopQuintile,
-    required this.ukCompositeImd2020MysocEmploymentScore,
-    required this.ukCompositeImd2020MysocUkImdEPopDecile,
-    required this.ukGovOnsLsoa,
+    required this.imdScore,
+    required this.imdRank,
+    required this.imdDecile,
+    required this.incomeScore,
+    required this.incomeScoreExponentiallyTransformed,
+    required this.incomeRank,
+    required this.incomeDecile,
+    required this.employmentScore,
+    required this.employmentScoreExponentiallyTransformed,
+    required this.employmentRank,
+    required this.employmentDecile,
+    required this.educationSkillsTrainingScoreExponentiallyTransformed,
+    required this.educationSkillsTrainingScore,
+    required this.educationSkillsTrainingRank,
+    required this.educationSkillsTrainingDecile,
+    required this.childrenYoungPeopleSubDomainScore,
+    required this.childrenYoungPeopleSubDomainRank,
+    required this.childrenYoungPeopleSubDomainDecile,
+    required this.adultSkillsSubDomainScore,
+    required this.adultSkillsSubDomainRank,
+    required this.adultSkillsSubDomainDecile,
+    required this.healthDeprivationDisabilityScoreExponentiallyTransformed,
+    required this.healthDeprivationDisabilityScore,
+    required this.healthDeprivationDisabilityRank,
+    required this.healthDeprivationDisabilityDecile,
+    required this.crimeScoreExponentiallyTransformed,
+    required this.crimeScore,
+    required this.crimeRank,
+    required this.crimeDecile,
+    required this.barriersToHousingServicesScoreExponentiallyTransformed,
+    required this.barriersToHousingServicesScore,
+    required this.barriersToHousingServicesRank,
+    required this.barriersToHousingServicesDecile,
+    required this.geographicalBarriersSubDomainScore,
+    required this.geographicalBarriersSubDomainRank,
+    required this.geographicalBarriersSubDomainDecile,
+    required this.widerBarriersSubDomainScore,
+    required this.widerBarriersSubDomainRank,
+    required this.widerBarriersSubDomainDecile,
+    required this.livingEnvironmentScore,
+    required this.livingEnvironmentScoreExponentiallyTransformed,
+    required this.livingEnvironmentRank,
+    required this.livingEnvironmentDecile,
+    required this.indoorsSubDomainScore,
+    required this.indoorsSubDomainRank,
+    required this.indoorsSubDomainDecile,
+    required this.outdoorsSubDomainScore,
+    required this.outdoorsSubDomainRank,
+    required this.outdoorsSubDomainDecile,
+    required this.idaciScore,
+    required this.idaciRank,
+    required this.idaciDecile,
+    required this.idaopiScore,
+    required this.idaopiRank,
+    required this.idaopiDecile,
+    required this.lsoa,
+    required this.type,
   });
 
-  double ukCompositeImd2020MysocIncomeScore;
-  int ukCompositeImd2020MysocEExpandedDecile;
-  String ukCompositeImd2020MysocNation;
-  double ukCompositeImd2020MysocUkImdEScore;
-  double ukCompositeImd2020MysocOverallLocalScore;
-  int ukCompositeImd2020MysocOriginalDecile;
-  int ukCompositeImd2020MysocUkImdERank;
-  int ukCompositeImd2020MysocUkImdEPopQuintile;
-  double ukCompositeImd2020MysocEmploymentScore;
-  int ukCompositeImd2020MysocUkImdEPopDecile;
-  String ukGovOnsLsoa;
+  double imdScore;
+  int imdRank;
+  int imdDecile;
+  double incomeScore;
+  double incomeScoreExponentiallyTransformed;
+  int incomeRank;
+  int incomeDecile;
+  double employmentScore;
+  double employmentScoreExponentiallyTransformed;
+  int employmentRank;
+  int employmentDecile;
+  double educationSkillsTrainingScoreExponentiallyTransformed;
+  double educationSkillsTrainingScore;
+  int educationSkillsTrainingRank;
+  int educationSkillsTrainingDecile;
+  double childrenYoungPeopleSubDomainScore;
+  int childrenYoungPeopleSubDomainRank;
+  int childrenYoungPeopleSubDomainDecile;
+  double adultSkillsSubDomainScore;
+  int adultSkillsSubDomainRank;
+  int adultSkillsSubDomainDecile;
+  double healthDeprivationDisabilityScoreExponentiallyTransformed;
+  double healthDeprivationDisabilityScore;
+  int healthDeprivationDisabilityRank;
+  int healthDeprivationDisabilityDecile;
+  double crimeScoreExponentiallyTransformed;
+  double crimeScore;
+  int crimeRank;
+  int crimeDecile;
+  double barriersToHousingServicesScoreExponentiallyTransformed;
+  double barriersToHousingServicesScore;
+  int barriersToHousingServicesRank;
+  int barriersToHousingServicesDecile;
+  double geographicalBarriersSubDomainScore;
+  int geographicalBarriersSubDomainRank;
+  int geographicalBarriersSubDomainDecile;
+  double widerBarriersSubDomainScore;
+  int widerBarriersSubDomainRank;
+  int widerBarriersSubDomainDecile;
+  double livingEnvironmentScore;
+  double livingEnvironmentScoreExponentiallyTransformed;
+  int livingEnvironmentRank;
+  int livingEnvironmentDecile;
+  double indoorsSubDomainScore;
+  int indoorsSubDomainRank;
+  int indoorsSubDomainDecile;
+  double outdoorsSubDomainScore;
+  int outdoorsSubDomainRank;
+  int outdoorsSubDomainDecile;
+  double idaciScore;
+  int idaciRank;
+  int idaciDecile;
+  double idaopiScore;
+  int idaopiRank;
+  int idaopiDecile;
+  String lsoa;
+  String type;
 
   factory ImdResponse.fromJson(Map<String, dynamic> json) => ImdResponse(
-        ukCompositeImd2020MysocIncomeScore:
-            json["uk-composite-imd-2020-mysoc/income_score"].toDouble(),
-        ukCompositeImd2020MysocEExpandedDecile:
-            json["uk-composite-imd-2020-mysoc/E_expanded_decile"],
-        ukCompositeImd2020MysocNation:
-            json["uk-composite-imd-2020-mysoc/nation"],
-        ukCompositeImd2020MysocUkImdEScore:
-            json["uk-composite-imd-2020-mysoc/UK_IMD_E_score"].toDouble(),
-        ukCompositeImd2020MysocOverallLocalScore:
-            json["uk-composite-imd-2020-mysoc/overall_local_score"].toDouble(),
-        ukCompositeImd2020MysocOriginalDecile:
-            json["uk-composite-imd-2020-mysoc/original_decile"],
-        ukCompositeImd2020MysocUkImdERank:
-            json["uk-composite-imd-2020-mysoc/UK_IMD_E_rank"],
-        ukCompositeImd2020MysocUkImdEPopQuintile:
-            json["uk-composite-imd-2020-mysoc/UK_IMD_E_pop_quintile"],
-        ukCompositeImd2020MysocEmploymentScore:
-            json["uk-composite-imd-2020-mysoc/employment_score"].toDouble(),
-        ukCompositeImd2020MysocUkImdEPopDecile:
-            json["uk-composite-imd-2020-mysoc/UK_IMD_E_pop_decile"],
-        ukGovOnsLsoa: json["uk.gov.ons/lsoa"],
+        imdScore: double.parse(json["imd_score"]),
+        imdRank: json["imd_rank"],
+        imdDecile: json["imd_decile"],
+        incomeScore: double.parse(json["income_score"]),
+        incomeScoreExponentiallyTransformed: double.parse(json["income_score_exponentially_transformed"]),
+        incomeRank: json["income_rank"],
+        incomeDecile: json["income_decile"],
+        employmentScore: double.parse(json["employment_score"]),
+        employmentScoreExponentiallyTransformed: double.parse(json["employment_score_exponentially_transformed"]),
+        employmentRank: json["employment_rank"],
+        employmentDecile: json["employment_decile"],
+        educationSkillsTrainingScoreExponentiallyTransformed: double.parse(json["education_skills_training_score_exponentially_transformed"]),
+        educationSkillsTrainingScore: double.parse(json["education_skills_training_score"]),
+        educationSkillsTrainingRank: json["education_skills_training_rank"],
+        educationSkillsTrainingDecile: json["education_skills_training_decile"],
+        childrenYoungPeopleSubDomainScore: double.parse(json["children_young_people_sub_domain_score"]),
+        childrenYoungPeopleSubDomainRank: json["children_young_people_sub_domain_rank"],
+        childrenYoungPeopleSubDomainDecile: json["children_young_people_sub_domain_decile"],
+        adultSkillsSubDomainScore: double.parse(json["adult_skills_sub_domain_score"]),
+        adultSkillsSubDomainRank: json["adult_skills_sub_domain_rank"],
+        adultSkillsSubDomainDecile: json["adult_skills_sub_domain_decile"],
+        healthDeprivationDisabilityScoreExponentiallyTransformed: double.parse(json["health_deprivation_disability_score_exponentially_transformed"]),
+        healthDeprivationDisabilityScore: double.parse(json["health_deprivation_disability_score"]),
+        healthDeprivationDisabilityRank: json["health_deprivation_disability_rank"],
+        healthDeprivationDisabilityDecile: json["health_deprivation_disability_decile"],
+        crimeScoreExponentiallyTransformed: double.parse(json["crime_score_exponentially_transformed"]),
+        crimeScore: double.parse(json["crime_score"]),
+        crimeRank: json["crime_rank"],
+        crimeDecile: json["crime_decile"],
+        barriersToHousingServicesScoreExponentiallyTransformed: double.parse(json["barriers_to_housing_services_score_exponentially_transformed"]),
+        barriersToHousingServicesScore: double.parse(json["barriers_to_housing_services_score"]),
+        barriersToHousingServicesRank: json["barriers_to_housing_services_rank"],
+        barriersToHousingServicesDecile: json["barriers_to_housing_services_decile"],
+        geographicalBarriersSubDomainScore: double.parse(json["geographical_barriers_sub_domain_score"]),
+        geographicalBarriersSubDomainRank: json["geographical_barriers_sub_domain_rank"],
+        geographicalBarriersSubDomainDecile: json["geographical_barriers_sub_domain_decile"],
+        widerBarriersSubDomainScore: double.parse(json["wider_barriers_sub_domain_score"]),
+        widerBarriersSubDomainRank: json["wider_barriers_sub_domain_rank"],
+        widerBarriersSubDomainDecile: json["wider_barriers_sub_domain_decile"],
+        livingEnvironmentScore: double.parse(json["living_environment_score"]),
+        livingEnvironmentScoreExponentiallyTransformed: double.parse(json["living_environment_score_exponentially_transformed"]),
+        livingEnvironmentRank: json["living_environment_rank"],
+        livingEnvironmentDecile: json["living_environment_decile"],
+        indoorsSubDomainScore: double.parse(json["indoors_sub_domain_score"]),
+        indoorsSubDomainRank: json["indoors_sub_domain_rank"],
+        indoorsSubDomainDecile: json["indoors_sub_domain_decile"],
+        outdoorsSubDomainScore: double.parse(json["outdoors_sub_domain_score"]),
+        outdoorsSubDomainRank: json["outdoors_sub_domain_rank"],
+        outdoorsSubDomainDecile: json["outdoors_sub_domain_decile"],
+        idaciScore: double.parse(json["idaci_score"]),
+        idaciRank: json["idaci_rank"],
+        idaciDecile: json["idaci_decile"],
+        idaopiScore: double.parse(json["idaopi_score"]),
+        idaopiRank: json["idaopi_rank"],
+        idaopiDecile: json["idaopi_decile"],
+        lsoa: json["lsoa"],
+        type: json["type"],
       );
 
   Map<String, dynamic> toJson() => {
-        "uk-composite-imd-2020-mysoc/income_score":
-            ukCompositeImd2020MysocIncomeScore,
-        "uk-composite-imd-2020-mysoc/E_expanded_decile":
-            ukCompositeImd2020MysocEExpandedDecile,
-        "uk-composite-imd-2020-mysoc/nation": ukCompositeImd2020MysocNation,
-        "uk-composite-imd-2020-mysoc/UK_IMD_E_score":
-            ukCompositeImd2020MysocUkImdEScore,
-        "uk-composite-imd-2020-mysoc/overall_local_score":
-            ukCompositeImd2020MysocOverallLocalScore,
-        "uk-composite-imd-2020-mysoc/original_decile":
-            ukCompositeImd2020MysocOriginalDecile,
-        "uk-composite-imd-2020-mysoc/UK_IMD_E_rank":
-            ukCompositeImd2020MysocUkImdERank,
-        "uk-composite-imd-2020-mysoc/UK_IMD_E_pop_quintile":
-            ukCompositeImd2020MysocUkImdEPopQuintile,
-        "uk-composite-imd-2020-mysoc/employment_score":
-            ukCompositeImd2020MysocEmploymentScore,
-        "uk-composite-imd-2020-mysoc/UK_IMD_E_pop_decile":
-            ukCompositeImd2020MysocUkImdEPopDecile,
-        "uk.gov.ons/lsoa": ukGovOnsLsoa,
+        "imd_score": imdScore,
+        "imd_rank": imdRank,
+        "imd_decile": imdDecile,
+        "income_score": incomeScore,
+        "income_score_exponentially_transformed": incomeScoreExponentiallyTransformed,
+        "income_rank": incomeRank,
+        "income_decile": incomeDecile,
+        "employment_score": employmentScore,
+        "employment_score_exponentially_transformed": employmentScoreExponentiallyTransformed,
+        "employment_rank": employmentRank,
+        "employment_decile": employmentDecile,
+        "education_skills_training_score_exponentially_transformed": educationSkillsTrainingScoreExponentiallyTransformed,
+        "education_skills_training_score": educationSkillsTrainingScore,
+        "education_skills_training_rank": educationSkillsTrainingRank,
+        "education_skills_training_decile": educationSkillsTrainingDecile,
+        "children_young_people_sub_domain_score": childrenYoungPeopleSubDomainScore,
+        "children_young_people_sub_domain_rank": childrenYoungPeopleSubDomainRank,
+        "children_young_people_sub_domain_decile": childrenYoungPeopleSubDomainDecile,
+        "adult_skills_sub_domain_score": adultSkillsSubDomainScore,
+        "adult_skills_sub_domain_rank": adultSkillsSubDomainRank,
+        "adult_skills_sub_domain_decile": adultSkillsSubDomainDecile,
+        "health_deprivation_disability_score_exponentially_transformed": healthDeprivationDisabilityScoreExponentiallyTransformed,
+        "health_deprivation_disability_score": healthDeprivationDisabilityScore,
+        "health_deprivation_disability_rank": healthDeprivationDisabilityRank,
+        "health_deprivation_disability_decile": healthDeprivationDisabilityDecile,
+        "crime_score_exponentially_transformed": crimeScoreExponentiallyTransformed,
+        "crime_score": crimeScore,
+        "crime_rank": crimeRank,
+        "crime_decile": crimeDecile,
+        "barriers_to_housing_services_score_exponentially_transformed": barriersToHousingServicesScoreExponentiallyTransformed,
+        "barriers_to_housing_services_score": barriersToHousingServicesScore,
+        "barriers_to_housing_services_rank": barriersToHousingServicesRank,
+        "barriers_to_housing_services_decile": barriersToHousingServicesDecile,
+        "geographical_barriers_sub_domain_score": geographicalBarriersSubDomainScore,
+        "geographical_barriers_sub_domain_rank": geographicalBarriersSubDomainRank,
+        "geographical_barriers_sub_domain_decile": geographicalBarriersSubDomainDecile,
+        "wider_barriers_sub_domain_score": widerBarriersSubDomainScore,
+        "wider_barriers_sub_domain_rank": widerBarriersSubDomainRank,
+        "wider_barriers_sub_domain_decile": widerBarriersSubDomainDecile,
+        "living_environment_score": livingEnvironmentScore,
+        "living_environment_score_exponentially_transformed": livingEnvironmentScoreExponentiallyTransformed,
+        "living_environment_rank": livingEnvironmentRank,
+        "living_environment_decile": livingEnvironmentDecile,
+        "indoors_sub_domain_score": indoorsSubDomainScore,
+        "indoors_sub_domain_rank": indoorsSubDomainRank,
+        "indoors_sub_domain_decile": indoorsSubDomainDecile,
+        "outdoors_sub_domain_score": outdoorsSubDomainScore,
+        "outdoors_sub_domain_rank": outdoorsSubDomainRank,
+        "outdoors_sub_domain_decile": outdoorsSubDomainDecile,
+        "idaci_score": idaciScore,
+        "idaci_rank": idaciRank,
+        "idaci_decile": idaciDecile,
+        "idaopi_score": idaopiScore,
+        "idaopi_rank": idaopiRank,
+        "idaopi_decile": idaopiDecile,
+        "lsoa": lsoa,
+        "type": type,
       };
 }

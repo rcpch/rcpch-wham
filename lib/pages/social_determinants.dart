@@ -36,13 +36,8 @@ class _SDOHRouteState extends State<SDOHRoute> {
     return postcodeData;
   }
 
-  void getIMDData(String lsoa) async {
-    imdData = (await ApiService().getIMDResponse(lsoa));
-    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
-  }
-
-  isPostcodeValid() async {
-    postcodeValid = (await ApiService().isValidPostcode('SE231DU'));
+  void getIMDData(String postcode) async {
+    imdData = (await ApiService().getIMDResponse(postcode));
     Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
   }
 
@@ -123,7 +118,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                   padding: const EdgeInsets.all(8),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    'Ranking : ${imdData!.ukCompositeImd2020MysocUkImdERank}',
+                                    'Ranking : ${imdData!.imdRank}',
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
@@ -134,7 +129,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                   padding: const EdgeInsets.all(8),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    'Score : ${imdData!.ukCompositeImd2020MysocUkImdEScore} [higher numbers are more deprived]',
+                                    'Score : ${imdData!.imdScore} [higher numbers are more deprived]',
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
@@ -145,7 +140,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                   padding: const EdgeInsets.all(8),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    'Expanded Decile: ${imdData!.ukCompositeImd2020MysocEExpandedDecile} [lower numbers are more deprived]',
+                                    'IMD Decile: ${imdData!.imdDecile} [lower numbers are more deprived]',
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
@@ -156,7 +151,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                   padding: const EdgeInsets.all(8),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    'Original Decile: ${imdData!.ukCompositeImd2020MysocOriginalDecile} [lower numbers are more deprived]',
+                                    'Income Score: ${imdData!.incomeScore}',
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
@@ -167,18 +162,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                   padding: const EdgeInsets.all(8),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    'Income: Better than ${imdData!.ukCompositeImd2020MysocIncomeScore}% of areas in the UK',
-                                    textAlign: TextAlign.left,
-                                    textScaleFactor: 1.0,
-                                    style: const TextStyle(
-                                        color: primaryColourLight,
-                                        fontFamily: 'Montserrat'),
-                                  )),
-                              Container(
-                                  padding: const EdgeInsets.all(8),
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    'Employment: Better than ${imdData!.ukCompositeImd2020MysocEmploymentScore}% of areas in the UK',
+                                    'Employment Score: ${imdData!.employmentScore}',
                                     textAlign: TextAlign.left,
                                     textScaleFactor: 1.0,
                                     style: const TextStyle(
@@ -251,8 +235,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                     ElevatedButton(
                                       style: ButtonStyle(
                                           backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  primaryColour),
+                                              MaterialStateProperty.all<Color>(primaryColour),
                                           shape: MaterialStateProperty.all<
                                                   RoundedRectangleBorder>(
                                               const RoundedRectangleBorder(
@@ -262,10 +245,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                                       color:
                                                           primaryColour)))),
                                       onPressed: () {
-                                        // Validate returns true if the form is valid, or false otherwise.
                                         if (_formKey.currentState!.validate()) {
-                                          // If the form is valid, display a snackbar. In the real world,
-                                          // you'd often call a server or save the information in a database.
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             const SnackBar(
@@ -273,12 +253,16 @@ class _SDOHRouteState extends State<SDOHRoute> {
                                                     Text('Processing Data')),
                                           );
                                           _formKey.currentState!.save();
-                                          getPostcodeData(
-                                                  postcodeController.text)
-                                              .then((value) => {
-                                                    getIMDData(
-                                                        value.codes.lsoa),
-                                                  });
+                                          getPostcodeData(postcodeController.text)
+                                              .then((value) {
+                                            if (value != null && value.codes != null) {
+                                              getIMDData(postcodeController.text);
+                                            } else {
+                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                const SnackBar(content: Text('Invalid postcode or no data found')),
+                                              );
+                                            }
+                                          });
                                         }
                                       },
                                       child: const Text('Submit'),
