@@ -10,10 +10,10 @@ const secondaryColourLight = Color(0xFFFFDEEA);
 const background = Color(0xFFFFFFFF);
 const textColor = Color(0xFF000000);
 
-class WhamTheme {
-  static final ThemeData defaultTheme = _buildWhamTheme();
+class LivingLensTheme {
+  static final ThemeData defaultTheme = _buildLivingLensTheme();
 
-  static ThemeData _buildWhamTheme() {
+  static ThemeData _buildLivingLensTheme() {
     return ThemeData(
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed( // Use fromSeed for better M3 scheme

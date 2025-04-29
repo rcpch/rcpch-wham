@@ -1,4 +1,4 @@
-# RCPCH Health Inequalities App
+# RCPCH Health Inequalities App (codename LivingLens)
 
 This was originally created as a partner app for the WHAM project. WHAM stands for Wellbeing and Health Action Movement.
 
@@ -18,11 +18,11 @@ The RCPCH Health Inequalities App is a Flutter 3.3 project, written in Dart. Flu
 1. Clone this repository
 
 ```shell
-git clone https://github.com/rcpch/rcpch-wham
+git clone https://github.com/rcpch/rcpch-livinglens
 ```
 
 ```shell
-cd rcpch-wham
+cd rcpch-livinglens
 ```
 
 1. Install dependencies

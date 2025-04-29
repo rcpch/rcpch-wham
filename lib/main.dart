@@ -8,9 +8,9 @@ import 'package:get/get.dart';
 import './pages/aces.dart';
 
 // Services
-import 'package:rcpch_wham/network/api_service.dart';
-import 'package:rcpch_wham/network/imdresponse.dart';
-import 'package:rcpch_wham/network/postcodesResponse.dart';
+import './network/api_service.dart';
+import './network/imdresponse.dart';
+import './network/postcodesResponse.dart';
 
 // Theming
 import './themes/colours.dart';
@@ -18,18 +18,18 @@ import './themes/colours.dart';
 
 void main() async {
   await dotenv.load();
-  runApp(const RCPCHWHAMApp());
+  runApp(const RCPCHLivingLensApp());
 }
 
-class RCPCHWHAMApp extends StatelessWidget {
-  const RCPCHWHAMApp({super.key});
+class RCPCHLivingLensApp extends StatelessWidget {
+  const RCPCHLivingLensApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'LivingLens',
-      theme: WhamTheme.defaultTheme,
+      theme: LivingLensTheme.defaultTheme,
       home: const SDOHRoute(title: 'Describing the environments in which children grow'),
     );
   }
