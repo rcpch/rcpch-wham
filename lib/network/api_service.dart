@@ -9,7 +9,7 @@ import './postcodesResponse.dart';
 class ApiService {
   Future<PostcodeData?> getPostcodeResponse(String postcode) async {
     try {
-      var url = Uri.parse("${ApiConstants.postcodesBaseUrl}/$postcode");
+      var url = Uri.parse("${ApiConstants.rcpchPostcodesBaseUrl}/$postcode");
       var response = await http.get(url);
 
       if (response.statusCode == 200) {
@@ -28,7 +28,7 @@ class ApiService {
   Future<bool> isValidPostcode(String postcode) async {
     try {
       var url =
-          Uri.parse("${ApiConstants.postcodesBaseUrl}/$postcode/validate");
+          Uri.parse("${ApiConstants.rcpchPostcodesBaseUrl}/$postcode/validate");
       var response = await http.get(url);
       if (response.statusCode == 200) {
         print('I got a postcode valid 200');
@@ -46,7 +46,7 @@ class ApiService {
 
   Future<ImdResponse?> getIMDResponse(String lsoa) async {
     try {
-      var url = Uri.parse("${ApiConstants.deprivareBaseUrl}/$lsoa");
+      var url = Uri.parse("${ApiConstants.rcpchCensusEngineBaseUrl}/$lsoa");
       var response = await http.get(url);
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
