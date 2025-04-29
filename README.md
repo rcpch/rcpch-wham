@@ -77,3 +77,14 @@ The app has been tested on:
 - If your Dart SDK isn't the correct version (at the time of writing it needs to be >3) then you can run `flutter upgrade` to update both Flutter and Dart. For some reason this was even required on a new install of Flutter in one case.
 
 - The Android Virtual Device Manager defaults to a very low amount of disk space for virtual Android devices, and quite often this disk space is insufficient to actually load an app into, causing failure of the app to run. There will be a 'not enough disk space' or similar error. To increase disk space, you can Edit the Virtual Device in Android Studio, select 'Advanced' and increase the device disk storage to something bigger.
+
+
+## Troubleshooting
+
+```
+The Android emulator exited with code 1 during startup
+Android emulator stderr:
+Address these issues and try again.
+```
+
+Try cold booting the Emulator. Go to the Android Virtual Device Manager in Android Studio and select "Cold Boot".
