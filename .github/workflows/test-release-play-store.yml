@@ -1,0 +1,41 @@
+name: Publish Flutter Android TESTING to Play Store
+
+on:
+  push:
+    branches:
+      - test-release-play-store
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4 # latest as at April 2025
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Android release APK
+        run: |
+          # flutter build apk --release # not used
+          flutter build appbundle --release
+
+      - name: Authenticate with Google
+        uses: google-github-actions/auth@v2 # latest as at April 2025
+        with:
+          credentials_json: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+
+      - name: Upload to Internal Test Track
+        uses: r0adkll/upload-google-play@v1
+        with:
+          # Either serviceAccountJson or serviceAccountJsonPlainText
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          releaseFiles: build/app/outputs/bundle/release/app-release.aab
+          packageName: com.example.yourapp
+          track: internal
