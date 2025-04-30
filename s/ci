@@ -2,3 +2,6 @@
 
 flutter pub get
 flutter test
+
+# Android
+flutter build appbundle
