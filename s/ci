@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+flutter pub get
+flutter test
