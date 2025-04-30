@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-const seedColor = Color(0xFF11a7f2); // Your original primary color
+import 'rcpch_colours.dart';
 
+const seedColor = rcpchPurple; // Your original primary color
 const primaryColour = Color(0xFF11a7f2);
 const primaryColourLight = Color(0xFFf0fafe);
 const primaryColourDark = Color(0xFF3366cc);
