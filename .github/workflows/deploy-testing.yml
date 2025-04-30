@@ -3,7 +3,7 @@ name: Build app (and TODO release to test users)
 on:
   push:
     branches:
-      - mbarton/ci-no-publish
+      - main
 
 jobs:
   build-and-publish:
