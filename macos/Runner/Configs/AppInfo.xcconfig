@@ -8,7 +8,7 @@
 PRODUCT_NAME = rcpch_livinglens
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.rcpchLivinglens
+PRODUCT_BUNDLE_IDENTIFIER = uk.ac.rcpch.rcpchLivinglens
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2025 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2025 uk.ac.rcpch. All rights reserved.
