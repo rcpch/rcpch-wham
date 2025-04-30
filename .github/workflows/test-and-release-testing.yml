@@ -26,6 +26,8 @@ jobs:
             echo "$ENV_FILE_CONTENTS" >> .env
 
       - name: Run CI script (test and build)
+        env:
+          BUILD_NUMBER: ${{github.run_number}}
         run: s/ci
 
       # - name: Authenticate with Google
