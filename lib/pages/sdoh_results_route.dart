@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:get/get.dart';
 // Services
-import '../network/api_service.dart';
 import '../network/imdresponse.dart';
 import '../network/postcodesResponse.dart';
 
@@ -45,7 +42,6 @@ class SDOHResultsRoute extends StatelessWidget {
                   title: Text(
                     postcodeData.postcode ?? "N/A",
                     textAlign: TextAlign.left,
-                    textScaleFactor: 1.5,
                     style: const TextStyle(
                         color: primaryColourLight,
                         fontFamily: 'Montserrat'),
@@ -53,7 +49,6 @@ class SDOHResultsRoute extends StatelessWidget {
                   subtitle: Text(
                     postcodeData.region ?? "N/A",
                     textAlign: TextAlign.left,
-                    textScaleFactor: 1.0,
                     style: const TextStyle(
                         color: primaryColourLight,
                         fontFamily: 'Montserrat'),
@@ -65,7 +60,6 @@ class SDOHResultsRoute extends StatelessWidget {
                     child: Text(
                       'CCG: ${postcodeData.adminDistrict ?? "N/A"}',
                       textAlign: TextAlign.left,
-                      textScaleFactor: 1.0,
                       style: const TextStyle(
                           color: primaryColourLight,
                           fontFamily: 'Montserrat'),
@@ -76,7 +70,7 @@ class SDOHResultsRoute extends StatelessWidget {
                     child: Text(
                       'IMD Decile: ${imdData.imdDecile ?? "N/A"}',
                       textAlign: TextAlign.left,
-                      textScaleFactor: 1.5,
+                      textScaler: const TextScaler.linear(1.5),
                       style: const TextStyle(
                           color: primaryColourLight,
                           fontFamily: 'Montserrat'),
@@ -87,7 +81,6 @@ class SDOHResultsRoute extends StatelessWidget {
                     child: const Text(
                       '[Lower numbers are more deprived]',
                       textAlign: TextAlign.left,
-                      textScaleFactor: 1.0,
                       style: TextStyle(
                           color: primaryColourLight,
                           fontFamily: 'Montserrat'),
@@ -110,7 +103,7 @@ class SDOHResultsRoute extends StatelessWidget {
                     title: Text(
                       'Subscores',
                       textAlign: TextAlign.left,
-                      textScaleFactor: 1.5,
+                      textScaler: const TextScaler.linear(1.5),
                       style: TextStyle(
                           color: primaryColourLight,
                           fontFamily: 'Montserrat'),
@@ -118,7 +111,6 @@ class SDOHResultsRoute extends StatelessWidget {
                     subtitle: Text(
                       'Index of multiple deprivation deciles',
                       textAlign: TextAlign.left,
-                      textScaleFactor: 1.0,
                       style: TextStyle(
                           color: primaryColourLight,
                           fontFamily: 'Montserrat'),
