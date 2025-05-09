@@ -1,4 +1,4 @@
-package com.example.rcpch_livinglens
+package uk.ac.rcpch.rcpch_livinglens
 
 import io.flutter.embedding.android.FlutterActivity
 
