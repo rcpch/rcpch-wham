@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e48dde9b-dd70-4d29-8a43-7dacbfcc70ec" name="Changes" comment="">
+    <list default="true" id="e48dde9b-dd70-4d29-8a43-7dacbfcc70ec" name="Changes" comment="text scaler">
+      <change afterPath="$PROJECT_DIR$/lib/classes/imd_info_class.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/sdoh_results_route.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sdoh_results_route.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +39,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "mbarton/ci-no-publish",
+    "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/michaelb/rcpch-wham",
@@ -60,5 +62,10 @@
       <updated>1745939407279</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="combine api calls into a single Future object, new screen to render results" />
+    <MESSAGE value="text scaler" />
+    <option name="LAST_COMMIT_MESSAGE" value="text scaler" />
   </component>
 </project>
