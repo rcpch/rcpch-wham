@@ -59,7 +59,7 @@ class PostcodeData {
     required this.codes,
   });
 
-  String postcode;
+  String? postcode;
   int quality;
   int eastings;
   int northings;
@@ -69,13 +69,13 @@ class PostcodeData {
   double latitude;
   String europeanElectoralRegion;
   String primaryCareTrust;
-  String region;
+  String? region;
   String lsoa;
   String msoa;
   String incode;
   String outcode;
   String parliamentaryConstituency;
-  String adminDistrict;
+  String? adminDistrict;
   String parish;
   dynamic adminCounty;
   String adminWard;
