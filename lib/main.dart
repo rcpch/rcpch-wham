@@ -229,7 +229,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
           const Padding(
             padding: EdgeInsets.all(30),
             child: Image(
-              image: AssetImage('assets/whamlogo.png'),
+              image: AssetImage('assets/pixelated_rcpch_incubator.png'),
               fit: BoxFit.fitWidth,
               width: 150,
             ),
