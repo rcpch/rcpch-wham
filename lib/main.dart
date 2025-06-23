@@ -192,7 +192,7 @@ class _SDOHRouteState extends State<SDOHRoute> {
                     'Please enter a postcode',
                     style: TextStyle(
                         color: textColor,
-                        fontSize: 30,
+                        fontSize: 20,
                         fontFamily: 'Montserrat'),
                   ),
                   TextFormField(
