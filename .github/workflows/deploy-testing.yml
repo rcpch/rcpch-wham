@@ -36,6 +36,12 @@ jobs:
         env:
           BUILD_NUMBER: ${{github.run_number}}
         run: s/ci
+      
+      - name: Decode Android keystore
+        run: echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 --decode > android/keystore.jks
+
+      - name: Decode Android key properties
+        run: echo "${{ secrets.ANDROID_KEY_PROPERTIES }}" | base64 --decode > android/key.properties
 
       - id: authenticate
         name: Authenticate with Google
