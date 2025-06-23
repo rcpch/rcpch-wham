@@ -1,6 +1,7 @@
 name: Build app (and TODO release to test users)
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -30,10 +31,11 @@ jobs:
           BUILD_NUMBER: ${{github.run_number}}
         run: s/ci
 
-      # - name: Authenticate with Google
-      #   uses: google-github-actions/auth@v2 # latest as at April 2025
-      #   with:
-      #     credentials_json: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+      - name: Authenticate with Google
+        uses: google-github-actions/auth@v2 # latest as at April 2025
+        with:
+          service_account: rcpch-livinglens@rcpch-livinglens.iam.gserviceaccount.com
+          workload_identity_provider: projects/603487155483/locations/global/workloadIdentityPools/rcpch-livinglens/providers/github
 
       # - name: Upload to Internal Test Track
       #   uses: r0adkll/upload-google-play@v1
