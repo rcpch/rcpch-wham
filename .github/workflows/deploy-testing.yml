@@ -54,4 +54,3 @@ jobs:
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
           packageName: uk.ac.rcpch.rcpch_livinglens
           track: internal
-          status: draft
