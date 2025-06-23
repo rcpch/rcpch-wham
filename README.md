@@ -72,6 +72,15 @@ The app has been tested on:
 - Linux Desktop (@pacharanero)
 
 
+## Releases
+
+- iOS
+  - TODO
+- Android
+  - Pushing to the `main` branch (including merging PRs) automatically update the [internal testing release](https://play.google.com/apps/internaltest/4701570421814090962)
+  - There is currently no beta or production release
+
+
 ## Some installation notes
 
 - If your Dart SDK isn't the correct version (at the time of writing it needs to be >3) then you can run `flutter upgrade` to update both Flutter and Dart. For some reason this was even required on a new install of Flutter in one case.
