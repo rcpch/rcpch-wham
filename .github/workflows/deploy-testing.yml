@@ -51,4 +51,4 @@ jobs:
           serviceAccountJson: ${{ steps.authenticate.outputs.credentials_file_path }}
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
           packageName: uk.ac.rcpch.rcpch_livinglens
-          track: qa
+          track: internal
